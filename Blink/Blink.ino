@@ -22,19 +22,40 @@
   https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink
 */
 
+#define LED_R 10
+#define LED_Y 11
+#define LED_G 12
+#define LED_B 13
+
+
 // the setup function runs once when you press reset or power the board
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(LED_R, OUTPUT);
+  pinMode(LED_Y, OUTPUT);
+  pinMode(LED_G, OUTPUT);
+  pinMode(LED_B, OUTPUT);
 
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("Start");
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
-  delay(1000);                      // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
-  delay(1000);                      // wait for a second
+  digitalWrite(LED_B, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(500);                      // wait for a second
+  digitalWrite(LED_B, LOW);   // turn the LED off by making the voltage LOW
+  delay(500);                      // wait for a second
+
+  uint8_t portB_val = PINB;
+  uint8_t portC_val = PINC;
+  uint8_t portD_val = PIND;
+  Serial.print(", portB:0x");
+  Serial.print(portB_val, HEX);
+  Serial.print(", portC:0x");
+  Serial.print(portC_val, HEX);
+  Serial.print(", portD:0x");
+  Serial.print(portD_val, HEX);
+  Serial.println("");
+
 }
